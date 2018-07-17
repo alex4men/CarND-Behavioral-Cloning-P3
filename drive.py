@@ -51,7 +51,7 @@ class SimplePIDController:
         return self.Kp * self.error + self.Ki * self.integral + self.Kd * self.differential
 
 
-controller = SimplePIDController(0.1, 0.002, 0.02)
+controller = SimplePIDController(0.1, 0.002, 0)
 set_speed = 9
 controller.set_desired(set_speed)
 
