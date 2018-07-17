@@ -68,7 +68,7 @@ The model used an adam optimizer, so the learning rate was not tuned manually (m
 
 #### 4. Appropriate training data
 
-Training data was chosen to keep the vehicle driving on the road. I tried to make my own dataset with a combination of center lane driving, recovering from the left and right sides of the road.
+Training data was chosen to keep the vehicle driving on the road. I made my own dataset with a combination of center lane driving, recovering from the left and right sides of the road.
 
 For details about how I created the training data, see the next section.
 
@@ -82,7 +82,7 @@ My first step was to use a convolution neural network model similar to the the [
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set.
 
-To combat the overfitting, I used 2 dropout layers with keep_probabilities of 0.75. Original values was 0.2 and 0.5 which was quite small and the result was not good.
+To combat the overfitting, I used 2 dropout layers with keep_probabilities of 0.75. Original values were 0.2 and 0.5 which were quite small and the result was poor.
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
@@ -94,7 +94,7 @@ The final model architecture (model.py lines 79-92) consisted of a convolution n
 |:---------------------:|:---------------------------------------------:|
 | Input         		| 160x320x3 RGB image   							|
 | Cropping         		| outputs 65x320x3 RGB image   							|
-| Normalization (Lambda layer) | division by 127.5 - 1.0  |
+| Normalization (Lambda layer) | x / 127.5 - 1.0  |
 | Convolution 8x8     	| 16 filters, 4x4 stride, same padding 	|
 | ELU					|												|
 | Convolution 5x5     	| 32 filters, 2x2 stride, same padding |
@@ -110,7 +110,7 @@ The final model architecture (model.py lines 79-92) consisted of a convolution n
 
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+To capture good driving behaviour, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
 ![alt text][image1]
 
@@ -119,13 +119,12 @@ I then recorded the vehicle recovering from the left side and right sides of the
 ![alt text][image2]
 ![alt text][image3]
 
-To augment the data sat, I also flipped images and angles thinking that this would help to generalize better. For example, here is an image that has then been flipped:
+To augment the data set, I also flipped images and angles thinking that this would help to generalize better. For example, here is an image that has then been flipped:
 
 ![alt text][image4]
 ![alt text][image5]
 
 After the collection process, I had 7565 number of data points. I then preprocessed this data by dividing by making special Python script (remove_path_beginning.py) which removes prepending path from each image path in the csv file and writes paths in the standard 'IMG/...' format.
-
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set.
 
