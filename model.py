@@ -60,13 +60,8 @@ with open('mydata/driving_log.csv') as csvfile:
 # Splitting to train and valiation datasets
 train_samples, validation_samples = train_test_split(samples, test_size=0.2)
 
-# compile and train the model using the generator function
-batch_size = 32
-train_generator = generator(train_samples, batch_size)
-validation_generator = generator(validation_samples, batch_size)
 
-
-# Kreating the model
+# Creating the model
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Lambda, ELU, Cropping2D, Conv2D
 
@@ -75,7 +70,7 @@ ch, row, col = 3, 160, 320  # camera format
 
 model = Sequential()
 
-# comma.ai architecture
+# This architecture is based on the comma.ai architecture
 model.add(Cropping2D(cropping=((70,25), (0,0)), input_shape=(row, col, ch)))
 model.add(Lambda(lambda x: x/127.5 - 1.))
 model.add(Conv2D(16, (8, 8), strides=(4, 4), padding="same"))
@@ -90,6 +85,12 @@ model.add(Dense(512))
 model.add(Dropout(.75))
 model.add(ELU())
 model.add(Dense(1))
+
+
+# Compile and train the model using the generator function
+batch_size = 32
+train_generator = generator(train_samples, batch_size)
+validation_generator = generator(validation_samples, batch_size)
 
 model.compile(optimizer="adam", loss="mse")
 
