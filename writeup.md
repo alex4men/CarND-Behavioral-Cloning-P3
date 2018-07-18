@@ -1,8 +1,8 @@
 # **Behavioral Cloning**
 
-## Writeup Template
+The final run of my Neural Network driving a car in the simulator:
 
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+![alt text][image6]
 
 ---
 
@@ -23,6 +23,8 @@ The goals / steps of this project are the following:
 [image3]: ./examples/recovery2.jpg "Recovery Image2"
 [image4]: ./examples/flip1.jpg "Non-Flipped Image"
 [image5]: ./examples/flip2.jpg "Flipped Image"
+[image6]: ./examples/video.gif "Video"
+
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
